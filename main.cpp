@@ -12,8 +12,8 @@ int main()
     vector<Coord> O{Coord{0,0},Coord{2,1}};
     vector<float> R{4,3};
     vector<Coord> P{Coord{1,3},Coord{2,1.41},Coord{0.2,-7},Coord{-5,-1},Coord{0,9}};
-    string man1 = "Manipulator1 |";
-    string man2 = "Manipulator2 |";
+    string man1 = "Manipulator1 |"; // вывод для Манипулятора 1
+    string man2 = "Manipulator2 |"; // вывод для Манипулятора 2
     //int P_num;
 //    cout << "Enter coordinates of Manipulator1:"; // Ввод значений  при необходимости
 //    cin >> O[0].x >> O[0].y;
@@ -32,13 +32,13 @@ int main()
 //        cin >> x >> y;
 //        P.push_back(Coord{x, y});
 //    }
-    for(int j = 0; j < P.size(); j++)
+    for(int j = 0; j < P.size(); j++) // обход по точкам
     {
         float min_dist;
         int num_man;
-        for(int i = 0; i < O.size();  i++)
+        for(int i = 0; i < O.size();  i++) // обход по манипуляторам
         {
-            float dist = (O[i].x - P[j].x) * (O[i].x - P[j].x) + (O[i].y - P[j].y) * (O[i].y - P[j].y);
+            float dist = (O[i].x - P[j].x) * (O[i].x - P[j].x) + (O[i].y - P[j].y) * (O[i].y - P[j].y); // расстояние от манипулятора до цели
             if(i == 0)
                 min_dist = dist;
             if(dist <= min_dist)
@@ -52,7 +52,7 @@ int main()
         if(num_man == 0) // Вывод в таблицу
         {
             man1 += " {";
-            man1 += to_string(O[num_man].x).substr(0, to_string(O[num_man].x).find(".") + 3);
+            man1 += to_string(O[num_man].x).substr(0, to_string(O[num_man].x).find(".") + 3); // представление float c двумя знаками после запятой для вывода
             man1 += ",";
             man1 += to_string(O[num_man].y).substr(0, to_string(O[num_man].y).find(".") + 3);
             man1 += "} ";
